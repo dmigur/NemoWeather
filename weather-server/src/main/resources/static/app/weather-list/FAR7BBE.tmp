@@ -1,0 +1,42 @@
+.row {
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+.request {
+    flowt: right;
+    margin-left: 60%;
+}
+
+.weather {
+    background-color: white;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 90%;
+    overflow: auto;;
+    min-height: 200px;
+    max-height: 500px;
+}
+
+.tweather{
+    color: black;
+    width: 80%;     
+    border: 1px;
+    background-color: white;
+    /*border: 1px solid black;*/
+}
+
+.tweather th, td{
+    padding: 4px 3px;
+}
+
+.tweather  th
+{
+    background-color: #C0C6DD;
+}
+
+.tweather td
+{
+    color: #1A1EB2
+}

@@ -1,0 +1,3 @@
+<h2>Nemo Weather Application</h2> 
+
+<app-weather-list></app-weather-list>

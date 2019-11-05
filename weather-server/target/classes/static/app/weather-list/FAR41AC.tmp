@@ -1,0 +1,38 @@
+<div class="container"> <!--panel panel-primary-->
+  <div class="row"> <!--panel-heading-->
+    <h3>Nemo Weather Application</h3> 
+  </div>
+  <div class="row" style="margin-botton: 10px">
+     <button (click)="onRequestWeather($event)">Request Weather</button> <!--Event Binding-->  
+  </div>
+  <div class="row" > <!--"panel-body"-->
+    <table class="table tweather table-striped">
+      <thead>
+        <tr>
+
+          <th>City</th>
+          <th>Date</th>
+
+          <th>Temperature</th>
+          <th>Pressure</th>
+
+          <th>Humidity</th>
+          <th>Wind Speed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let weather of weathers">
+
+          <td>{{weather.city}}</td>        
+          <td>{{weather.date | date : 'yyyy-MM-dd HH:mm' }}</td>
+
+          <td>{{weather.temp}}</td>
+          <td>{{weather.pressure}}</td>
+
+          <td>{{weather.humidity}}</td>
+          <td>{{weather.windSpeed}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

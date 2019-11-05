@@ -1,0 +1,41 @@
+﻿test
+
+NemoWeather Application README
+
+DESCRIPTION
+------------------------------
+NemoWeather application periodically takes weather data from the https://openweathermap.org/ site and
+ shows it on the screen, the latest on top.
+ 
+NemoWeather app consists of 2 applications:
+1. weather-server - server API
+2. weather-client - client UI 
+
+PREREQUISITES
+-------------------------------
+1. Install PostgreSQL and create "weather" database. 
+The application is configured to use PostgreSQL on localhost, port 5432
+2. Install Maven, version 3+
+
+SETTINGS
+----------------------------
+In the application.properties file there are 2 user settings : 
+1. weather.cron.expression -  cron expression to call OpenWeatherAPI periodically (default: each 10 minutes)
+2. weather.request.cities  -  cities to take weather data from  
+
+INSTYALLATION AND RUNNING
+-------------------------------
+1. Go to NemoWeather folder
+2. Run command:  mvn install
+  - Will be installed: nodejs, npm, node-modules in weather-client folder. weather-client will be ready to use.  
+  - weather-server application will be build.
+3. Go to weather-client folder
+4. Run weather-client application by command: node/npm start
+5. Go to weather-server folder 
+6. Run weather-server application by command: mvn spring-boot:run
+7. Open web page localhost:4200
+
+In the opened page observe how the table populated with the weather. The data is refreshed every 20 seconds.
+Clicking on "Request Current Weather" button will take the weather at the present moment.
+You can browse on the table using >> and << buttons.
+

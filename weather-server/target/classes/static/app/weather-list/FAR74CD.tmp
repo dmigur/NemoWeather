@@ -1,0 +1,97 @@
+import { Observable,interval, Subscription } from "rxjs";
+import { WeatherService } from "../weather.service";
+import { Weather } from "../weather";
+import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
+
+@Component({
+  selector: "app-weather-list",
+  templateUrl: "./weather-list.component.html",
+  styleUrls: ["./weather-list.component.css"]
+})
+export class WeatherListComponent implements OnInit {
+//  weathers: Observable<Weather[]>;
+    weathers: Weather[];
+
+  constructor(private weatherService: WeatherService,
+    private router: Router) {}
+
+  private updateSubscription: Subscription;
+  private tableIndex: number ;
+  private showItems: number ;
+  
+
+  ngOnInit() {
+
+      this.showItems  = 20;
+      this.tableIndex = 0;
+     
+      this.reloadData(); 
+                                 
+
+      this.updateSubscription = interval(10000).subscribe(
+        (val) => { this.reloadData() ;  
+       console.log("reloading data");
+      }
+  )};
+
+
+  reloadData() {
+ 
+    document.body.classList.add("waiting"); 
+
+   this.weatherService.getWeatherList().subscribe(res => {
+      let response = JSON.parse(JSON.stringify(res))
+      this.weathers = response.data;
+      document.body.classList.remove("waiting"); 
+      //console.log("loaded weather = " + this.weathers.length);
+    })
+ 
+ // this.weathers = this.weatherService.getWeatherList();
+  
+  }
+
+  onRequestWeather(){
+
+   console.log("request data");
+   this.weatherService.createWeatherNow().subscribe(res => {
+        this.reloadData();
+    })
+  }
+
+  showItem(index) : boolean {
+    let show = this.tableIndex <= index && index < this.tableIndex + this.showItems;
+    return show;
+  }
+  onNavLeft()  {
+    if (this.tableIndex<=this.showItems )
+       this.tableIndex = 0;
+    else
+       this.tableIndex -= this.showItems;
+  }
+ 
+  isNavLeft() : boolean {
+
+       if (!this.weathers) return false;
+
+       return this.tableIndex > 0;
+  }                               
+
+  isNavRight() : boolean {
+
+       if (!this.weathers) return false;
+
+       return this.tableIndex < this.weathers.length - this.showItems;
+
+ //        return true;
+  }                               
+  
+  onNavRight()  {
+                             
+     if (!this.weathers) return;
+     if (this.tableIndex >= this.weathers.length - this.showItems) return;
+     this.tableIndex += this.showItems;
+    
+  }
+
+}
