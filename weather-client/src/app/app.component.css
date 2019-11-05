@@ -1,0 +1,15 @@
+.signature{
+
+  color: black;
+  margin-left: 65%;
+  flex:  right;
+  top: 15px;
+  position: absolute;
+}
+
+.signature .name{
+
+  color: black;
+  font-weight: bold;
+  
+}

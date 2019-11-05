@@ -1,0 +1,55 @@
+.row {
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+.request {
+    flow: right;
+    margin-left: 37%;
+}
+
+.weather {
+    background-color: white;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 95%;
+    overflow: auto;;
+    min-height: 200px;
+    max-height: 500px;
+}
+
+.navigation  {
+
+  margin-left: 35px;
+  width: 100px;
+}
+.tweather{
+    color: black;
+    width: 100%;     
+    border: 1px;
+    background-color: white;
+    /*border: 1px solid black;*/
+}
+
+.tweather th, td{
+    padding: 4px 3px;
+}
+
+.tweather  th
+{
+    background-color: #C0C6DD;
+}
+
+.tweather td
+{
+    color: #00163d
+}
+
+
+.waiting { cursor: wait; }
+
+.info { 
+    margin-left: 20px
+}
+

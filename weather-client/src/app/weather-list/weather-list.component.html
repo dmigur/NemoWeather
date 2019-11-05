@@ -1,0 +1,45 @@
+<div> <!--panel panel-primary-->
+  <div class="row" >
+     <span class="navigation">
+       <button (click)="onNavLeft()"  [disabled]="!isNavLeft()"><<</button>  &nbsp; &nbsp;   <button (click)="onNavRight()" [disabled]="!isNavRight()">>></button>
+     </span>
+     <span class="info"> {{getInfo()}} </span>
+    <button class="request" (click)="onRequestWeather($event)">Request Current Weather</button> <!--Event Binding-->
+  </div>
+  <div class="row weather" > <!--"panel-body"-->
+
+    <table class="table tweather table-striped">
+      <thead>
+        <tr>
+
+          <th>City</th>
+          <th>Country</th>
+
+          <th>Date</th>
+          <th>Temperature</th>
+          <th>Pressure</th>
+
+          <th>Humidity</th>
+          <th>Wind Speed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let weather of weathers; let i = index" >
+              <ng-container *ngIf="showItem(i)">
+
+          <td>{{weather.city}}</td>
+          <td>{{weather.country}}</td>
+
+          <td>{{weather.date | date : 'yyyy-MM-dd HH:mm:ss' }}</td>
+
+          <td>{{weather.temp}}&deg;C</td>
+          <td>{{weather.pressure}} hPa</td>
+
+          <td>{{weather.humidity}}%</td>
+          <td>{{weather.windSpeed}} m/s</td>
+</ng-container>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
